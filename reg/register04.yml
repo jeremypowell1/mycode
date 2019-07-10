@@ -17,7 +17,7 @@
         name: bastet
         state: present
       become: yes
-      when: ansible_os_family == "Redhat"
+      when: ansible_os_family == "RedHat"
 
     - name: Get all home directories across systems
       command: ls /home
