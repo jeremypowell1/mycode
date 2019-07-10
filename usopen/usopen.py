@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 ## USOpen Tournament Switch Checker -- 2018.05.01
 ''' usopen.py
 This script is being designed to provide the following automated tasks:

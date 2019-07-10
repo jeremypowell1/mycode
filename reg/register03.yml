@@ -1,0 +1,28 @@
+---
+
+- name: Play - Another Register Example
+  hosts: planet_express
+  gather_facts: true
+
+  tasks:
+    - name: Reachout to geturl to random generation
+      get_url:
+        url: https://www.random.org/integers/?num=1&min=0&max=1&col=1&base=10&format=plain&rnd=new
+        dest: ~/rand.txt
+        force: yes
+
+    - name: Read the rand.txt and save results in randvarz
+      command: cat rand.txt
+      register: _randvarz
+      changed_when: _randvarz.rc == 0
+      failed_when: _randvarz.rc == 1
+
+    - name: "debug - display a win"
+      debug:
+        msg: "Congratulations! {{ ansible_hostname }} won! :) "
+      when: _randvarz.stdout == "1"
+
+    - name: "debig - display a failure"
+      debug:
+        msg: "Sorry.  {{ ansible_hostname }} lost. :( "
+      when: _randvarz.stdout == "0"
