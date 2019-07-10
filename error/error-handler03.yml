@@ -9,7 +9,12 @@
       - shell: "echo 'My single task ran' > example.txt"
       - shell: "echo 'My second task ran' >> example.txt"
       - command: /bin/false #this always returns a false value
+        register: _result
+
     rescue:
       - shell: "echo 'My rescue code ran. Maybe it undoes whatever the block tried to do' >> example.txt"
     always:
       - shell: "echo 'This always runs. Maybe it is a commit, or an entry in a log.' >> example.txt"
+  
+  - debug:
+      msg: "{{ _result.rc }}"
