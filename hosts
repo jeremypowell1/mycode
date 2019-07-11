@@ -1,0 +1,8 @@
+[planet_express]
+bender	ansible_host=10.10.2.3	ansible_ssh_user=bender
+fry	ansible_host=10.10.2.4	ansible_ssh_user=fry
+zoidberg	ansible_host=10.10.2.5	ansible_ssh_user=zoidberg
+
+[switches]
+napya-291-sw1
+napya-291-sw2
